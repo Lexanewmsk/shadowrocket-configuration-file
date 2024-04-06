@@ -53,7 +53,7 @@ DOMAIN-KEYWORD,fb.com
 DOMAIN-KEYWORD,z-p42-chat-e2ee-ig.facebook.com
 # Torrent
 DOMAIN-KEYWORD,rutor.info,HTTPS://DNS.GOOGLE/DNS-QUERY
-DOMAIN-KEYWORD,rutracker.org,HTTPS://DNS.GOOGLE/DNS-QUERY
+DOMAIN-KEYWORD,rutracker.org,https://cloudflare-dns.com/dns-query
 DOMAIN-KEYWORD,nnmclub.to
 # Other
 DOMAIN-SUFFIX,twitter.com
