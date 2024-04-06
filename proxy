@@ -1,0 +1,156 @@
+# NAME: Proxy
+# AUTHOR: Yuvelirtut
+# REPO: https://github.com/Lexanewmsk/shadowrocket-configuration-file
+# UPDATED: 2024-04-06 21:37:00
+# Claude
+DOMAIN-KEYWORD,anthropic.com
+DOMAIN-KEYWORD,claude.ai
+# Google
+DOMAIN-KEYWORD,google.com,
+DOMAIN-KEYWORD,gemini.google.com
+# Instagram
+DOMAIN-SUFFIX,meta.com
+DOMAIN-KEYWORD,instagram
+DOMAIN-KEYWORD,facebook
+DOMAIN-KEYWORD,facebook.com
+DOMAIN-KEYWORD,fb10.online
+DOMAIN-KEYWORD,fb13.online
+DOMAIN-KEYWORD,fb14.online
+DOMAIN-KEYWORD,fb17.online
+DOMAIN-KEYWORD,fb19.online
+DOMAIN-KEYWORD,fb20.online
+DOMAIN-KEYWORD,fb25.online
+DOMAIN-KEYWORD,fb5.online
+DOMAIN-KEYWORD,fb77redirect.com
+DOMAIN-KEYWORD,fb7redirect.com
+DOMAIN-KEYWORD,fb8.online
+DOMAIN-KEYWORD,fb.com
+DOMAIN-KEYWORD,fbi1.media
+DOMAIN-KEYWORD,fbi2.media
+DOMAIN-KEYWORD,fbi.media
+DOMAIN-KEYWORD,fb.me
+DOMAIN-KEYWORD,fbotvet.com
+DOMAIN-KEYWORD,fbpigeon.com
+DOMAIN-KEYWORD,fbsbx.com
+DOMAIN-KEYWORD,fbtc.ru
+DOMAIN-KEYWORD,facebook.com
+DOMAIN-KEYWORD,fbcdn.net
+DOMAIN-KEYWORD,fb.com
+DOMAIN-KEYWORD,messenger.com
+DOMAIN-KEYWORD,instagram.com
+DOMAIN-KEYWORD,i.instagram.com
+DOMAIN-KEYWORD,i-fallback.instagram.com
+DOMAIN-KEYWORD,instagram.fkun2-1.fna.fbcdn.net
+DOMAIN-KEYWORD,graph.facebook.com
+DOMAIN-KEYWORD,graph.instagram.com
+DOMAIN-KEYWORD,gateway.instagram.com
+DOMAIN-KEYWORD,graph-fallback.instagram.com
+DOMAIN-KEYWORD,instagram.frix4-1.fna.fbcdn.net
+DOMAIN-KEYWORD,scontent.fkun2-1.fna.fbcdn.net
+DOMAIN-KEYWORD,web.facebook.com
+DOMAIN-KEYWORD,facebook.com
+DOMAIN-KEYWORD,fb.com
+DOMAIN-KEYWORD,z-p42-chat-e2ee-ig.facebook.com
+# Torrent
+DOMAIN-KEYWORD,rutor.info
+DOMAIN-KEYWORD,rutracker.org
+DOMAIN-KEYWORD,nnmclub.to
+# Other
+DOMAIN-SUFFIX,twitter.com
+DOMAIN-KEYWORD,iherb.com
+DOMAIN-KEYWORD,tinder.com
+DOMAIN-KEYWORD,badoo.com
+DOMAIN-SUFFIX,amd.com
+DOMAIN-SUFFIX,booking.com
+DOMAIN-SUFFIX,nvidia.com
+DOMAIN-KEYWORD,4pda.ru
+DOMAIN-KEYWORD,4pda.to
+DOMAIN-SUFFIX,github.com
+DOMAIN-SUFFIX,github.io
+DOMAIN-SUFFIX,githubusercontent.com
+DOMAIN-KEYWORD,bbc.com
+DOMAIN-KEYWORD,bitcoin.org
+DOMAIN-KEYWORD,canva.com
+DOMAIN-KEYWORD,euronews.com
+DOMAIN-KEYWORD,kinozal.tv
+DOMAIN-KEYWORD,linkedin.com
+DOMAIN-KEYWORD,lostfilm.tv
+DOMAIN-KEYWORD,netflix.com
+DOMAIN-KEYWORD,paypal.com
+DOMAIN-KEYWORD,play.google.com
+DOMAIN-KEYWORD,ru.depositphotos.com
+DOMAIN-KEYWORD,spotify.com
+DOMAIN-SUFFIX,paypal.com
+DOMAIN-SUFFIX,paypalobjects.com
+DOMAIN-SUFFIX,windows.com
+DOMAIN-SUFFIX,windowsupdate.com
+# Top blocked sites
+DOMAIN-SUFFIX,snapchat.com
+DOMAIN-SUFFIX,bloomberg.com
+DOMAIN-SUFFIX,cloudflare.com
+DOMAIN-SUFFIX,dropbox.com
+DOMAIN-SUFFIX,dropboxstatic.com
+DOMAIN-SUFFIX,dropboxusercontent.com
+DOMAIN-SUFFIX,duckduckgo.com
+DOMAIN-SUFFIX,openvpn.net
+DOMAIN-SUFFIX,openwrt.org
+DOMAIN-SUFFIX,wikipedia.com
+DOMAIN-SUFFIX,wikipedia.org
+DOMAIN-SUFFIX,linkedin.com
+# Signal
+DOMAIN-KEYWORD,signal.org
+DOMAIN-KEYWORD,ud-chat.signal.org
+DOMAIN-KEYWORD,chat.signal.org
+DOMAIN-KEYWORD,storage.signal.org
+# ChatGPT
+DOMAIN-KEYWORD,openai.com
+DOMAIN-KEYWORD,chat.openai.com
+DOMAIN-KEYWORD,ios.chat.openai.com
+DOMAIN-KEYWORD,ab.chatgpt.com
+DOMAIN-KEYWORD,api.revenuecat.com
+DOMAIN-KEYWORD,browser-intake-datadoghq.com
+DOMAIN-KEYWORD,files.oaiusercontent.com
+DOMAIN-KEYWORD,api.statsig.com
+DOMAIN-KEYWORD,macgpt.com
+DOMAIN-KEYWORD,tcr9i.chat.openai.com
+DOMAIN-KEYWORD,api-iam.intercom.io
+DOMAIN-KEYWORD,events.statsigapi.net
+DOMAIN-KEYWORD,tcr9i.chat.openai.com
+DOMAIN-KEYWORD,challenges.cloudflare.com
+DOMAIN-KEYWORD,o33249.ingest.sentry.io
+DOMAIN-KEYWORD,platform.openai.com
+DOMAIN-KEYWORD,cdn.openai.com
+DOMAIN-KEYWORD,auth0.openai.com
+DOMAIN-KEYWORD,cdn.auth0.com
+DOMAIN-KEYWORD,openaiapi-site.azureedge.net
+DOMAIN-KEYWORD,images.openai.com
+DOMAIN-KEYWORD,openaicomproductionae4b.blob.core.windows.net
+DOMAIN-KEYWORD,openaicom-api-bdcpf8c6d2e9atf6.z01.azurefd.net
+DOMAIN-KEYWORD,api.openai.com
+DOMAIN-KEYWORD,cdn.oaistatic.com
+DOMAIN-KEYWORD,api.openai.com
+DOMAIN-KEYWORD,widget.intercom.io
+DOMAIN-KEYWORD,js.intercomcdn.com
+DOMAIN-KEYWORD,auth.openai.com
+DOMAIN-SUFFIX,chatgpt-async-webps-prod-eastus-9.webpubsub.azure.com
+DOMAIN-SUFFIX,statsigapi.net
+# HyperPay
+DOMAIN-KEYWORD,ws-offchain.hyperpay.online
+DOMAIN-KEYWORD,hyperpay.oss-ap-southeast-1.aliyuncs.com
+DOMAIN-KEYWORD,www.hyperpay.online
+DOMAIN-KEYWORD,onchain.hyperpay.online
+DOMAIN-KEYWORD,hyperpayhelp.zendesk.com
+DOMAIN-KEYWORD,hyperpay.oss-accelerate.aliyuncs.com
+DOMAIN-KEYWORD,x.baigougo.com
+DOMAIN-SUFFIX,www.hyperpay.online
+# Clashofclans
+DOMAIN-KEYWORD,o315582.ingest.sentry.io.com
+DOMAIN-KEYWORD,cdn.id.supercell.com
+DOMAIN-KEYWORD,clashofclans.inbox.supercell.com
+DOMAIN-KEYWORD,p162-fmfmobile.icloud.com
+DOMAIN-KEYWORD,id.supercell.com
+DOMAIN-KEYWORD,event-assets-2.clashofclans.com
+DOMAIN-KEYWORD,game-assets-2.clashofclans.com
+DOMAIN-KEYWORD,game-assets.clashofclans.com
+DOMAIN-KEYWORD,game.clashofclans.com
+DOMAIN-KEYWORD,inventory.mtech.supercell.com
