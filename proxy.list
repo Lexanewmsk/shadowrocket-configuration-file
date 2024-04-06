@@ -7,6 +7,7 @@ DOMAIN-KEYWORD,anthropic.com
 DOMAIN-KEYWORD,claude.ai
 # Google
 DOMAIN-KEYWORD,google.com
+DOMAIN-KEYWORD,gemini.google.com
 # Instagram
 DOMAIN-SUFFIX,meta.com
 DOMAIN-KEYWORD,instagram
@@ -51,6 +52,7 @@ DOMAIN-KEYWORD,facebook.com
 DOMAIN-KEYWORD,fb.com
 DOMAIN-KEYWORD,z-p42-chat-e2ee-ig.facebook.com
 # Torrent
+DOMAIN-KEYWORD,rutor.info
 DOMAIN-KEYWORD,rutracker.org
 DOMAIN-KEYWORD,nnmclub.to
 # Other
