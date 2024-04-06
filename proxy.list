@@ -7,7 +7,6 @@ DOMAIN-KEYWORD,anthropic.com
 DOMAIN-KEYWORD,claude.ai
 # Google
 DOMAIN-KEYWORD,google.com,
-DOMAIN-KEYWORD,gemini.google.com,HTTPS://DNS.CONTROLD.COM/COMSS
 # Instagram
 DOMAIN-SUFFIX,meta.com
 DOMAIN-KEYWORD,instagram
@@ -154,4 +153,3 @@ DOMAIN-KEYWORD,game-assets-2.clashofclans.com
 DOMAIN-KEYWORD,game-assets.clashofclans.com
 DOMAIN-KEYWORD,game.clashofclans.com
 DOMAIN-KEYWORD,inventory.mtech.supercell.com
-DOMAIN-KEYWORD,dnsleaktest.com,https://cloudflare-dns.com/dns-query
