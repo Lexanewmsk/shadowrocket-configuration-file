@@ -152,3 +152,16 @@ DOMAIN-KEYWORD,game-assets-2.clashofclans.com
 DOMAIN-KEYWORD,game-assets.clashofclans.com
 DOMAIN-KEYWORD,game.clashofclans.com
 DOMAIN-KEYWORD,inventory.mtech.supercell.com
+# DNS Leak
+DOMAIN-SUFFIX,whrq.net,
+DOMAIN-SUFFIX,dnsleak.com
+DOMAIN-SUFFIX,expressvpn.com
+DOMAIN-SUFFIX,nordvpn.com
+DOMAIN-SUFFIX,surfshark.com
+DOMAIN-SUFFIX,ipleak.net
+DOMAIN-SUFFIX,perfect-privacy.com
+DOMAIN-SUFFIX,browserleaks.com
+DOMAIN-SUFFIX,browserleaks.org
+DOMAIN-SUFFIX,vpnunlimited.com
+DOMAIN-SUFFIX,whoer.net
+DOMAIN-SUFFIX,whrq.net
