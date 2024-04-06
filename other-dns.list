@@ -1,0 +1,9 @@
+# NAME: Proxy
+# AUTHOR: Yuvelirtut
+# REPO: https://github.com/Lexanewmsk/shadowrocket-configuration-file
+# UPDATED: 2024-04-06 16:43:00
+
+DOMAIN-KEYWORD,gemini.google.com
+DOMAIN-KEYWORD,rutor.info
+DOMAIN-KEYWORD,rutracker.org
+DOMAIN-KEYWORD,dnsleak.com
