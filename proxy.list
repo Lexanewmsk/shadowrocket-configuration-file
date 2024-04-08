@@ -1,7 +1,7 @@
 # NAME: Proxy
 # AUTHOR: Yuvelirtut
 # REPO: https://github.com/Lexanewmsk/shadowrocket-configuration-file
-# UPDATED: 2024-04-06 23:00:00
+# UPDATED: 2024-04-08 12:00:00
 # Claude
 DOMAIN-KEYWORD,anthropic.com
 DOMAIN-KEYWORD,claude.ai
@@ -148,3 +148,4 @@ DOMAIN-SUFFIX,game-assets-2.clashofclans.com
 DOMAIN-SUFFIX,game-assets.clashofclans.com
 DOMAIN-SUFFIX,game.clashofclans.com
 DOMAIN-SUFFIX,inventory.mtech.supercell.com
+DOMAIN-SUFFIX,adguard.com
