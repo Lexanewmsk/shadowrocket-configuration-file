@@ -1,7 +1,7 @@
 # NAME: Proxy
 # AUTHOR: Yuvelirtut
 # REPO: https://github.com/Lexanewmsk/shadowrocket-configuration-file
-# UPDATED: 2024-04-08 12:00:00
+# UPDATED: 2024-04-17 12:00:00
 # Claude
 DOMAIN-KEYWORD,anthropic.com
 DOMAIN-KEYWORD,claude.ai
@@ -79,6 +79,7 @@ DOMAIN-SUFFIX,spotify.com
 DOMAIN-SUFFIX,paypalobjects.com
 DOMAIN-SUFFIX,windows.com
 DOMAIN-SUFFIX,windowsupdate.com
+DOMAIN-SUFFIX,officecdnmac.microsoft.com
 # Top blocked sites
 DOMAIN-SUFFIX,snapchat.com
 DOMAIN-SUFFIX,bloomberg.com
