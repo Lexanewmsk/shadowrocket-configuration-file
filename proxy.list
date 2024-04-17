@@ -79,7 +79,6 @@ DOMAIN-SUFFIX,spotify.com
 DOMAIN-SUFFIX,paypalobjects.com
 DOMAIN-SUFFIX,windows.com
 DOMAIN-SUFFIX,windowsupdate.com
-DOMAIN-SUFFIX,officecdnmac.microsoft.com
 # Top blocked sites
 DOMAIN-SUFFIX,snapchat.com
 DOMAIN-SUFFIX,bloomberg.com
