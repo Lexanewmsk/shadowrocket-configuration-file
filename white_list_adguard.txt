@@ -3,11 +3,7 @@
 ### Updated: 2024-05-05 13:00:00
 ### REPO: https://github.com/Lexanewmsk/shadowrocket-configuration-file
 
-youtube.com
 @@||youtube.com^
-rutracker.org
 @@||rutracker.org^
-rutrk.org
 @@||rutrk.org^
-vak345.com
 @@||vak345.com^
