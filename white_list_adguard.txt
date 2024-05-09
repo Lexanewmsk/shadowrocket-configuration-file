@@ -9,3 +9,4 @@
 @@||vak345.com^
 @@||static.cloudflareinsights.com^
 @@||cdn.advg.agency^
+@@||receivedachest.com^
