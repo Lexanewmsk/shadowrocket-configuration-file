@@ -7,3 +7,5 @@ youtube.com
 @@||youtube.com^
 rutracker.org
 @@||rutracker.org^
+rutrk.org
+@@||rutrk.org^
