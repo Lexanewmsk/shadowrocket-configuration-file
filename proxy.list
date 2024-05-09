@@ -100,6 +100,7 @@ DOMAIN-SUFFIX,storage.signal.org
 # ChatGPT
 DOMAIN-SUFFIX,openai.com
 DOMAIN-SUFFIX,chat.openai.com
+DOMAIN-SUFFIX,chatgpt.com
 DOMAIN-SUFFIX,ios.chat.openai.com
 DOMAIN-SUFFIX,ab.chatgpt.com
 DOMAIN-SUFFIX,api.revenuecat.com
@@ -116,6 +117,7 @@ DOMAIN-SUFFIX,o33249.ingest.sentry.io
 DOMAIN-SUFFIX,platform.openai.com
 DOMAIN-SUFFIX,cdn.openai.com
 DOMAIN-SUFFIX,auth0.openai.com
+DOMAIN-SUFFIX,auth.openai.com
 DOMAIN-SUFFIX,cdn.auth0.com
 DOMAIN-SUFFIX,openaiapi-site.azureedge.net
 DOMAIN-SUFFIX,images.openai.com
