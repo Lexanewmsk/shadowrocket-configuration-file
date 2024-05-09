@@ -4,4 +4,6 @@
 ### REPO: https://github.com/Lexanewmsk/shadowrocket-configuration-file
 
 youtube.com
+@@||youtube.com^
 rutracker.org
+@@||rutracker.org^
