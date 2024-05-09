@@ -5,8 +5,3 @@
 
 @@||youtube.com^
 @@||rutracker.org^
-@@||rutrk.org^
-@@||vak345.com^
-@@||static.cloudflareinsights.com^
-@@||cdn.advg.agency^
-@@||receivedachest.com^
