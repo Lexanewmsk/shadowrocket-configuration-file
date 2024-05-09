@@ -7,3 +7,4 @@
 @@||rutracker.org^
 @@||rutrk.org^
 @@||vak345.com^
+@@||static.cloudflareinsights.comm^
