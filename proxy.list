@@ -79,7 +79,6 @@ DOMAIN-SUFFIX,spotify.com
 DOMAIN-SUFFIX,paypalobjects.com
 DOMAIN-SUFFIX,windows.com
 DOMAIN-SUFFIX,windowsupdate.com
-DOMAIN-SUFFIX,finevpn.org
 # Top blocked sites
 DOMAIN-SUFFIX,snapchat.com
 DOMAIN-SUFFIX,bloomberg.com
@@ -89,6 +88,7 @@ DOMAIN-SUFFIX,dropboxstatic.com
 DOMAIN-SUFFIX,dropboxusercontent.com
 DOMAIN-SUFFIX,duckduckgo.com
 DOMAIN-SUFFIX,openvpn.net
+DOMAIN-SUFFIX,finevpn.org
 DOMAIN-SUFFIX,openwrt.org
 DOMAIN-SUFFIX,wikipedia.com
 DOMAIN-SUFFIX,wikipedia.org
