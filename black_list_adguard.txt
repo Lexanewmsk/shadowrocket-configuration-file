@@ -1,7 +1,15 @@
 ### White list for Adguard Home
 ### License: Yuvelirtut
-### Updated: 2024-05-09 21:00:00
+### Updated: 2024-05-19 19:00:00
 ### REPO: https://github.com/Lexanewmsk/shadowrocket-configuration-file
 
-@@||youtube.com^
-@@||rutracker.org^
+||telecid.ru^
+||stbid.ru^
+||cmediahub.ru^
+||adriver.ru^
+||tradingview.com/*/charting_library/*ad*$domain=tradingview.com
+||tradingview.com/*/charting_library/*ads*$domain=tradingview.com
+||tradingview.com/*/charting_library/*banner*$domain=tradingview.com
+||tradingview.com/*/charting_library/*track*$domain=tradingview.com
+||tradingview.com/*/charting_library/*analytics*$domain=tradingview.com
+||tradingview.com/*/charting_library/*pixel*$domain=tradingview.com
