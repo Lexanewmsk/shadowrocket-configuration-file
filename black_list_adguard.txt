@@ -13,3 +13,13 @@
 ||tradingview.com/*/charting_library/*track*$domain=tradingview.com
 ||tradingview.com/*/charting_library/*analytics*$domain=tradingview.com
 ||tradingview.com/*/charting_library/*pixel*$domain=tradingview.com
+||ads.apple.com/*
+||iadsdk.apple.com/*
+||advertising.apple.com/*
+||buy.itunes.apple.com/ads/*
+||itunes.apple.com/WebObjects/MZStore.woa/wa/viewAdvertisement
+||metrics.apple.com/*
+||analyticssandbox.apple.com/*
+||analytics.apple.com/*
+||init.ess.apple.com/*
+||updates-http.cdn-apple.com/*
