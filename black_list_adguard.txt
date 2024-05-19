@@ -4,11 +4,7 @@
 ### REPO: https://github.com/Lexanewmsk/shadowrocket-configuration-file
 
 # Телевизор реклама
-||telecid.ru^
-||*.telecid.ru^
-||stbid.ru^
-||*.stbid.ru^
-||cmediahub.ru^
-||*.cmediahub.ru^
-||adriver.ru^
-||*.adriver.ru^
+*.telecid.ru
+*.stbid.ru
+*.cmediahub.ru
+*.adriver.ru
