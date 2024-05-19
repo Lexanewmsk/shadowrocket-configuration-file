@@ -49,7 +49,7 @@ DOMAIN-SUFFIX,web.facebook.com
 DOMAIN-SUFFIX,z-p42-chat-e2ee-ig.facebook.com
 # Torrent
 DOMAIN-SUFFIX,rutor.info
-DOMAIN-SUFFIX,rutracker.org
+DOMAIN-SUFFIX,rutracker.org,1.1.1.1
 DOMAIN-SUFFIX,nnmclub.to
 # Other
 DOMAIN-SUFFIX,twitter.com
