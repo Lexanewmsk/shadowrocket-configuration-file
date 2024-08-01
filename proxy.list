@@ -8,14 +8,18 @@ DOMAIN-KEYWORD,claude.ai
 # Google
 DOMAIN-KEYWORD,google.com
 DOMAIN-KEYWORD,gemini.google.com
-# Google
-youtube.com
-youtu.be
-yt.be
-ytimg.com
-googlevideo.com
-yt3.ggpht.com
-youtubei.googleapis.com
+# Youtube
+DOMAIN-KEYWORD,youtube
+DOMAIN-SUFFIX,youtube.com
+DOMAIN-SUFFIX,youtu.be
+DOMAIN-SUFFIX,yt.be
+DOMAIN-SUFFIX,ytimg.com
+DOMAIN-SUFFIX,googlevideo.com
+DOMAIN-SUFFIX,yt3.ggpht.com
+DOMAIN-SUFFIX,youtubei.googleapis.com
+DOMAIN-SUFFIX,googleusercontent.com
+DOMAIN-SUFFIX,gstatic.com
+DOMAIN-SUFFIX,youtube.tv
 # Instagram
 DOMAIN-SUFFIX,meta.com
 DOMAIN-KEYWORD,instagram
