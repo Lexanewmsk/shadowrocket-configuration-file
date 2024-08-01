@@ -9,6 +9,7 @@ DOMAIN-KEYWORD,claude.ai
 DOMAIN-KEYWORD,google.com
 DOMAIN-KEYWORD,gemini.google.com
 DOMAIN-SUFFIX,mail.google.com
+DOMAIN-SUFFIX,play.google.com
 # Youtube
 DOMAIN-KEYWORD,youtube
 DOMAIN-SUFFIX,youtube.com
@@ -93,7 +94,6 @@ DOMAIN-SUFFIX,linkedin.com
 DOMAIN-SUFFIX,lostfilm.tv
 DOMAIN-SUFFIX,netflix.com
 DOMAIN-SUFFIX,paypal.com
-DOMAIN-SUFFIX,play.google.com
 DOMAIN-SUFFIX,ru.depositphotos.com
 DOMAIN-SUFFIX,spotify.com
 DOMAIN-SUFFIX,paypalobjects.com
