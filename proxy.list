@@ -26,6 +26,7 @@ DOMAIN-SUFFIX,gstatic.com
 DOMAIN-SUFFIX,googleads.g.doubleclick.net
 DOMAIN-SUFFIX,firebaselogging-pa.googleapis.com
 DOMAIN-SUFFIX,jnn-pa.googleapis.com
+DOMAIN-SUFFIX,safebrowsing.googleapis.com
 # Instagram
 DOMAIN-SUFFIX,meta.com
 DOMAIN-KEYWORD,instagram
