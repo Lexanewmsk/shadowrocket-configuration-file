@@ -1,6 +1,6 @@
 ### White list for Adguard Home
 ### License: Yuvelirtut
-### Updated: 2024-05-09 21:00:00
+### Updated: 2024-08-01 19:00:00
 ### REPO: https://github.com/Lexanewmsk/shadowrocket-configuration-file
 
 @@||youtube.com^
