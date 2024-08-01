@@ -1,6 +1,6 @@
 ### White list for Adguard Home
 ### License: Yuvelirtut
-### Updated: 2024-05-19 19:00:00
+### Updated: 2024-08-01 19:00:00
 ### REPO: https://github.com/Lexanewmsk/shadowrocket-configuration-file
 
 # Телевизор реклама
