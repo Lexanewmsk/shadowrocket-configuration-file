@@ -8,6 +8,7 @@ DOMAIN-KEYWORD,claude.ai
 # Google
 DOMAIN-KEYWORD,google.com
 DOMAIN-KEYWORD,gemini.google.com
+DOMAIN-SUFFIX,mail.google.com
 # Youtube
 DOMAIN-KEYWORD,youtube
 DOMAIN-SUFFIX,youtube.com
