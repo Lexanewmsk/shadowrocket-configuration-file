@@ -1,9 +1,8 @@
 # NAME: Direct
 # AUTHOR: Yuvelirtut
 # REPO: https://github.com/Lexanewmsk/shadowrocket-configuration-file
-# UPDATED: 2024-05-02 19:00:00
+# UPDATED: 2024-08-01 19:00:00
 # Google
-DOMAIN-SUFFIX,mail.google.com
 DOMAIN-SUFFIX,google.ru
 # Whatsapp
 DOMAIN-SUFFIX,whatsapp.net
