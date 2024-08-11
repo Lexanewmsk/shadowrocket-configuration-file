@@ -12,23 +12,15 @@ DOMAIN-SUFFIX,mail.google.com
 DOMAIN-SUFFIX,play.google.com
 # Youtube
 DOMAIN-KEYWORD,youtube
-DOMAIN-SUFFIX,youtube.com
-DOMAIN-SUFFIX,m.youtube.com
-DOMAIN-SUFFIX,youtube.tv
 DOMAIN-SUFFIX,youtu.be
 DOMAIN-SUFFIX,yt.be
-DOMAIN-SUFFIX,ytimg.com
-DOMAIN-SUFFIX,i9.ytimg.com
-DOMAIN-SUFFIX,i.ytimg.com
-DOMAIN-SUFFIX,yt3.ggpht.com
+DOMAIN-KEYWORD,ytimg
+DOMAIN-SUFFIX,ggpht.com
 DOMAIN-SUFFIX,googlevideo.com
-DOMAIN-SUFFIX,youtubei.googleapis.com
+DOMAIN-SUFFIX,googleapis.com
 DOMAIN-SUFFIX,googleusercontent.com
 DOMAIN-SUFFIX,gstatic.com
 DOMAIN-SUFFIX,googleads.g.doubleclick.net
-DOMAIN-SUFFIX,firebaselogging-pa.googleapis.com
-DOMAIN-SUFFIX,jnn-pa.googleapis.com
-DOMAIN-SUFFIX,safebrowsing.googleapis.com
 # Instagram
 DOMAIN-SUFFIX,meta.com
 DOMAIN-KEYWORD,instagram
