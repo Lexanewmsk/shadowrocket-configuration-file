@@ -1,18 +1,18 @@
 // Anti-fingerprint script for Shadowrocket
 // Requires: type=http-response
 
-const antiFingerprintScript = `
-
-<script>
+const antiFingerprintScript = `<script>
 (function() {
-    // Подмена User-Agent
-    Object.defineProperty(navigator, 'userAgent', {
-        get: function() {
-            return 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36';
-        },
-        configurable: true
-    });
+try {
+// Подмена User-Agent
+Object.defineProperty(navigator, ‘userAgent’, {
+get: function() {
+return ‘Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36’;
+},
+configurable: true
+});
 
+```
     // Подмена разрешения экрана
     Object.defineProperty(window, 'screen', {
         get: function() {
@@ -92,43 +92,57 @@ const antiFingerprintScript = `
     };
 
     // Подмена часового пояса
-    Object.defineProperty(Date.prototype, 'getTimezoneOffset', {
-        value: function() {
-            return 0; // UTC
-        },
-        configurable: true
-    });
+    const originalGetTimezoneOffset = Date.prototype.getTimezoneOffset;
+    Date.prototype.getTimezoneOffset = function() {
+        return 0; // UTC
+    };
+
+    console.log('Anti-fingerprint script loaded successfully');
+} catch (error) {
+    console.error('Anti-fingerprint script error:', error);
+}
+```
+
 })();
 </script>`;
 
 // Основная функция обработки HTTP-ответа
+try {
 if ($response.status === 200) {
 let body = $response.body;
 
 ```
-// Проверяем, является ли ответ HTML-страницей
-if (body && ($response.headers['Content-Type'] || $response.headers['content-type'] || '').includes('text/html')) {
-    // Вставляем скрипт в начало <head> или перед </head>
-    if (body.includes('<head>')) {
-        body = body.replace('<head>', '<head>' + antiFingerprintScript);
-    } else if (body.includes('</head>')) {
-        body = body.replace('</head>', antiFingerprintScript + '</head>');
-    } else if (body.includes('<html>')) {
-        body = body.replace('<html>', '<html>' + antiFingerprintScript);
-    }
+    // Проверяем, является ли ответ HTML-страницей
+    const contentType = ($response.headers['Content-Type'] || $response.headers['content-type'] || '').toLowerCase();
     
-    $done({
-        response: {
-            status: $response.status,
-            headers: $response.headers,
-            body: body
+    if (body && contentType.includes('text/html')) {
+        // Вставляем скрипт в начало <head> или перед </head>
+        if (body.includes('<head>')) {
+            body = body.replace('<head>', '<head>' + antiFingerprintScript);
+        } else if (body.includes('</head>')) {
+            body = body.replace('</head>', antiFingerprintScript + '</head>');
+        } else if (body.includes('<html>')) {
+            body = body.replace('<html>', '<html>' + antiFingerprintScript);
+        } else if (body.includes('<body>')) {
+            body = body.replace('<body>', antiFingerprintScript + '<body>');
         }
-    });
+        
+        $done({
+            response: {
+                status: $response.status,
+                headers: $response.headers,
+                body: body
+            }
+        });
+    } else {
+        $done({});
+    }
 } else {
     $done({});
 }
 ```
 
-} else {
+} catch (error) {
+console.error(‘Script processing error:’, error);
 $done({});
 }
