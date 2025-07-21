@@ -1,108 +1,98 @@
-// Anti-fingerprint script for Shadowrocket
-// Requires: type=http-response
+// Скрипт для модификации HTTP заголовков в Shadowrocket
+// Тип события: Request
 
-// Основная функция обработки HTTP-ответа
-try {
-if ($response.status === 200) {
-let body = $response.body;
+let headers = $request.headers;
+let url = $request.url;
+let hostname = $request.url.match(/https?://([^/]+)/)[1];
+
+// Универсальный User-Agent для мобильных устройств
+const mobileUA = “Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1”;
+
+// Desktop User-Agent
+const desktopUA = “Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36”;
+
+// Конфигурация для разных сайтов
+const siteConfigs = {
+// Социальные сети
+“instagram.com”: {
+“User-Agent”: mobileUA,
+“Accept-Language”: “en-US,en;q=0.9”,
+“X-Requested-With”: “XMLHttpRequest”
+},
 
 ```
-    // Проверяем, является ли ответ HTML-страницей
-    const contentType = ($response.headers['Content-Type'] || $response.headers['content-type'] || '').toLowerCase();
-    
-    if (body && contentType.includes('text/html')) {
-        
-        const antiFingerprintScript = '<script>' +
-            '(function() {' +
-            '    try {' +
-            '        Object.defineProperty(navigator, "userAgent", {' +
-            '            get: function() {' +
-            '                return "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36";' +
-            '            },' +
-            '            configurable: true' +
-            '        });' +
-            '        Object.defineProperty(window, "screen", {' +
-            '            get: function() {' +
-            '                return {' +
-            '                    width: 1920,' +
-            '                    height: 1080,' +
-            '                    availWidth: 1920,' +
-            '                    availHeight: 1080,' +
-            '                    colorDepth: 24,' +
-            '                    pixelDepth: 24' +
-            '                };' +
-            '            },' +
-            '            configurable: true' +
-            '        });' +
-            '        Object.defineProperty(navigator, "language", {' +
-            '            get: function() {' +
-            '                return "en-US";' +
-            '            },' +
-            '            configurable: true' +
-            '        });' +
-            '        Object.defineProperty(navigator, "languages", {' +
-            '            get: function() {' +
-            '                return ["en-US", "en"];' +
-            '            },' +
-            '            configurable: true' +
-            '        });' +
-            '        Object.defineProperty(navigator, "plugins", {' +
-            '            get: function() {' +
-            '                return {' +
-            '                    length: 0,' +
-            '                    item: function() { return null; },' +
-            '                    namedItem: function() { return null; },' +
-            '                    refresh: function() {}' +
-            '                };' +
-            '            },' +
-            '            configurable: true' +
-            '        });' +
-            '        const originalToDataURL = HTMLCanvasElement.prototype.toDataURL;' +
-            '        HTMLCanvasElement.prototype.toDataURL = function() {' +
-            '            const canvas = document.createElement("canvas");' +
-            '            canvas.width = 1;' +
-            '            canvas.height = 1;' +
-            '            const ctx = canvas.getContext("2d");' +
-            '            if (ctx) {' +
-            '                ctx.fillStyle = "rgba(0, 0, 0, 0.01)";' +
-            '                ctx.fillRect(0, 0, 1, 1);' +
-            '            }' +
-            '            return originalToDataURL.apply(this, arguments);' +
-            '        };' +
-            '        console.log("Anti-fingerprint loaded");' +
-            '    } catch (error) {' +
-            '        console.error("Anti-fingerprint error:", error);' +
-            '    }' +
-            '})();' +
-            '</script>';
-        
-        // Вставляем скрипт
-        if (body.indexOf('<head>') !== -1) {
-            body = body.replace('<head>', '<head>' + antiFingerprintScript);
-        } else if (body.indexOf('</head>') !== -1) {
-            body = body.replace('</head>', antiFingerprintScript + '</head>');
-        } else if (body.indexOf('<html>') !== -1) {
-            body = body.replace('<html>', '<html>' + antiFingerprintScript);
-        } else if (body.indexOf('<body>') !== -1) {
-            body = body.replace('<body>', antiFingerprintScript + '<body>');
-        }
-        
-        $done({
-            response: {
-                status: $response.status,
-                headers: $response.headers,
-                body: body
-            }
-        });
-    } else {
-        $done({});
-    }
-} else {
-    $done({});
+"twitter.com": {
+    "User-Agent": desktopUA,
+    "Accept-Language": "en-US,en;q=0.9"
+},
+
+"x.com": {
+    "User-Agent": desktopUA,
+    "Accept-Language": "en-US,en;q=0.9"
+},
+
+// Видео платформы
+"youtube.com": {
+    "User-Agent": desktopUA,
+    "Accept-Language": "en-US,en;q=0.9",
+    "Accept-Encoding": "gzip, deflate, br"
+},
+
+"netflix.com": {
+    "User-Agent": desktopUA,
+    "Accept-Language": "en-US,en;q=0.9"
+},
+
+// Стриминговые сервисы
+"spotify.com": {
+    "User-Agent": desktopUA,
+    "Accept-Language": "en-US,en;q=0.9"
+},
+
+// Новостные сайты
+"bbc.com": {
+    "User-Agent": desktopUA,
+    "Accept-Language": "en-GB,en;q=0.9"
+},
+
+"cnn.com": {
+    "User-Agent": desktopUA,
+    "Accept-Language": "en-US,en;q=0.9"
 }
 ```
 
-} catch (error) {
-console.error(‘Script error:’, error);
-$done({});
+};
+
+// Применяем конфигурацию для конкретного сайта
+for (let domain in siteConfigs) {
+if (hostname.includes(domain)) {
+let config = siteConfigs[domain];
+for (let header in config) {
+headers[header] = config[header];
 }
+console.log(`Applied headers for ${domain}`);
+break;
+}
+}
+
+// Общие заголовки для всех запросов
+headers[“Accept”] = “text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8”;
+headers[“Cache-Control”] = “no-cache”;
+headers[“Pragma”] = “no-cache”;
+
+// Удаляем заголовки, которые могут выдать VPN/прокси
+delete headers[“X-Forwarded-For”];
+delete headers[“X-Real-IP”];
+delete headers[“Via”];
+delete headers[“X-Forwarded-Proto”];
+
+// Добавляем заголовки для обхода некоторых блокировок
+if (url.includes(“cloudflare”)) {
+headers[“CF-Connecting-IP”] = “1.1.1.1”;
+}
+
+// Логирование для отладки (закомментируйте в продакшене)
+// console.log(`Modified headers for: ${hostname}`);
+// console.log(`User-Agent: ${headers["User-Agent"]}`);
+
+$done({headers: headers});
