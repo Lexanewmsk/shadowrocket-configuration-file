@@ -1,36 +1,38 @@
 let headers = $request.headers;
 let url = $request.url;
 
-// Проверка исходного User-Agent для определения платформы
+// Оригинальный User-Agent
 let originalUA = headers["User-Agent"] || "";
 let isMobile = originalUA.includes("iPhone") || originalUA.includes("iPad") || originalUA.includes("iPod");
 
-// Массив User-Agent для Mac/iPhone
+// User-Agent для Mac (Chrome)
 const desktopAgents = [
     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
 ];
 
+// User-Agent для подмены под iPhone 12 Pro (iOS 14.6)
 const mobileAgents = [
-    "Mozilla/5.0 (Linux; Android 13; SM-G991B) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36"
+    "Mozilla/5.0 (iPhone; CPU iPhone OS 14_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0 Mobile/15E148 Safari/604.1"
 ];
 
-// Случайный выбор User-Agent (один на платформу для стабильности)
+// Выбор нужного User-Agent
 const randomUA = isMobile ? mobileAgents[0] : desktopAgents[0];
 headers["User-Agent"] = randomUA;
 
-// Минимальные заголовки для Chrome
+// Устанавливаем заголовки для Chrome и Safari
 if (randomUA.includes("Chrome")) {
     headers["Sec-Ch-Ua"] = '"Not_A Brand";v="8", "Chromium";v="120", "Google Chrome";v="120"';
     headers["Sec-Ch-Ua-Mobile"] = isMobile ? "?1" : "?0";
     headers["Sec-Ch-Ua-Platform"] = isMobile ? '"Android"' : '"macOS"';
     headers["Accept"] = "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8";
+
     if (isMobile) {
-        headers["Sec-Ch-Width"] = "360";
-        headers["Sec-Ch-Viewport-Width"] = "360";
+        headers["Sec-Ch-Width"] = "390"; // iPhone 12 Pro viewport
+        headers["Sec-Ch-Viewport-Width"] = "390";
     }
 }
 
-// Удаляем заголовки, выдающие proxy/VPN
+// Удаляем заголовки, которые могут выдать реальный IP/прокси
 delete headers["X-Forwarded-For"];
 delete headers["X-Real-IP"];
 delete headers["Via"];
@@ -41,16 +43,17 @@ delete headers["True-Client-IP"];
 
 $done({headers: headers});
 
-// Для http-response: минимальная подмена
+// Минимальная подмена JS-объектов в body ответа
 if ($response) {
     let body = $response.body;
-    if (body) {
-        if (randomUA.includes("Chrome")) {
-            body = body.replace(/navigator\.platform\s*=\s*['"]iPhone['"]/g, 'navigator.platform = (isMobile ? "Linux armv8l" : "MacIntel")');
-            body = body.replace(/navigator\.platform\s*=\s*['"]iPad['"]/g, 'navigator.platform = (isMobile ? "Linux armv8l" : "MacIntel")');
-            body = body.replace(/navigator\.platform\s*=\s*['"]MacIntel['"]/g, 'navigator.platform = (isMobile ? "Linux armv8l" : "MacIntel")');
-            body = body.replace(/navigator\.userAgentData\.platform\s*=\s*['"]iOS['"]/g, 'navigator.userAgentData.platform = (isMobile ? "Android" : "macOS")');
+    if (body && typeof body === "string") {
+        if (randomUA.includes("Chrome") || randomUA.includes("Safari")) {
+            // Подмена platform
+            body = body.replace(/navigator\.platform\s*=\s*['"][^'"]+['"]/g, `navigator.platform = "${isMobile ? "iPhone" : "MacIntel"}"`);
+
+            // Подмена userAgentData.platform
+            body = body.replace(/navigator\.userAgentData\.platform\s*=\s*['"][^'"]+['"]/g, `navigator.userAgentData.platform = "${isMobile ? "iOS" : "macOS"}"`);
         }
     }
-    $done({body: body});
+    $done({body});
 }
