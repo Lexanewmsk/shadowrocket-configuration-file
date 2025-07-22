@@ -13,7 +13,7 @@ const desktopAgents = [
 ];
 
 const mobileAgents = [
-    "Mozilla/5.0 (Linux; Android 13; SM-G991B) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36" // Один Android для упрощения
+    "Mozilla/5.0 (Linux; Android 13; SM-G991B) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36"
 ];
 
 // Случайный выбор User-Agent
@@ -33,9 +33,13 @@ if (randomUA.includes("Chrome")) {
         headers["Sec-Ch-Ua-Platform"] = isMobile ? '"Android"' : '"Linux"';
     }
     
-    headers["Upgrade-Insecure-Requests"] = "1";
+    headers["Upgrade-Insecure-Requests"] = isMobile ? undefined : "1"; // Только для десктопа
     headers["Accept"] = "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7";
-    headers["Accept-Language"] = "en-US,en;q=0.9";
+    headers["Accept-Language"] = "en-US,en;q=0.9"; // Стандартный язык для мобильного
+    if (isMobile) {
+        headers["Sec-Ch-Width"] = "360"; // Пример ширины экрана для мобильного
+        headers["Sec-Ch-Viewport-Width"] = "360";
+    }
 }
 
 // Дополнительные заголовки для Firefox
@@ -64,14 +68,16 @@ if ($response) {
             body = body.replace(/navigator\.platform\s*=\s*['"]iPhone['"]/g, 'navigator.platform = (isMobile ? "Linux armv8l" : "MacIntel")');
             body = body.replace(/navigator\.platform\s*=\s*['"]iPad['"]/g, 'navigator.platform = (isMobile ? "Linux armv8l" : "MacIntel")');
             body = body.replace(/navigator\.platform\s*=\s*['"]MacIntel['"]/g, 'navigator.platform = (isMobile ? "Linux armv8l" : "MacIntel")');
-            body = body.replace(/navigator\.userAgentData\.platform\s*=\s*['"]iOS['"]/g, 'navigator.userAgentData.platform = (isMobile ? "Android" : "macOS")');
+            body = body.replace(/navigator\.platform\s*=\s*['"]Win32['"]/g, 'navigator.platform = (isMobile ? "Linux armv8l" : (randomUA.includes("Windows") ? "Win32" : "MacIntel"))');
+            body = body.replace(/navigator\.userAgentData\.platform\s*=\s*['"]iOS['"]/g, 'navigator.userAgentData.platform = (isMobile ? "Android" : (randomUA.includes("Windows") ? "Windows" : "macOS"))');
             body = body.replace(/screen\.width\s*=\s*\d+/g, 'screen.width = (isMobile ? 360 : 1920)');
             body = body.replace(/screen\.height\s*=\s*\d+/g, 'screen.height = (isMobile ? 800 : 1080)');
         } else if (randomUA.includes("Firefox")) {
             body = body.replace(/navigator\.platform\s*=\s*['"]iPhone['"]/g, 'navigator.platform = (isMobile ? "Linux armv8l" : "MacIntel")');
             body = body.replace(/navigator\.platform\s*=\s*['"]iPad['"]/g, 'navigator.platform = (isMobile ? "Linux armv8l" : "MacIntel")');
             body = body.replace(/navigator\.platform\s*=\s*['"]MacIntel['"]/g, 'navigator.platform = (isMobile ? "Linux armv8l" : "MacIntel")');
-            body = body.replace(/navigator\.userAgentData\.platform\s*=\s*['"]iOS['"]/g, 'navigator.userAgentData.platform = (isMobile ? "Android" : "macOS")');
+            body = body.replace(/navigator\.platform\s*=\s*['"]Win32['"]/g, 'navigator.platform = (isMobile ? "Linux armv8l" : (randomUA.includes("Windows") ? "Win32" : "MacIntel"))');
+            body = body.replace(/navigator\.userAgentData\.platform\s*=\s*['"]iOS['"]/g, 'navigator.userAgentData.platform = (isMobile ? "Android" : (randomUA.includes("Windows") ? "Windows" : "macOS"))');
             body = body.replace(/screen\.width\s*=\s*\d+/g, 'screen.width = (isMobile ? 360 : 1280)');
             body = body.replace(/screen\.height\s*=\s*\d+/g, 'screen.height = (isMobile ? 800 : 800)');
         }
