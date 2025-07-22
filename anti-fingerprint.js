@@ -1,12 +1,8 @@
 let headers = $request.headers;
 let url = $request.url;
 
-// Проверка исходного User-Agent для определения платформы
-let originalUA = headers["User-Agent"] || "";
-let isMobile = originalUA.includes("iPhone") || originalUA.includes("iPad") || originalUA.includes("iPod");
-
 // Массив User-Agent для ротации
-const desktopAgents = [
+const userAgents = [
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36",
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36",
@@ -17,21 +13,14 @@ const desktopAgents = [
     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:121.0) Gecko/20100101 Firefox/121.0"
 ];
 
-// Массив User-Agent для Android (для мобильного режима)
-const mobileAgents = [
-    "Mozilla/5.0 (Linux; Android 13; SM-G991B) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36",
-    "Mozilla/5.0 (Linux; Android 12; Pixel 6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Mobile Safari/537.36",
-    "Mozilla/5.0 (Linux; Android 14; SM-S908B) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Mobile Safari/537.36"
-];
-
 // Случайный выбор User-Agent
-const randomUA = isMobile ? mobileAgents[Math.floor(Math.random() * mobileAgents.length)] : desktopAgents[Math.floor(Math.random() * desktopAgents.length)];
+const randomUA = userAgents[Math.floor(Math.random() * userAgents.length)];
 headers["User-Agent"] = randomUA;
 
 // Дополнительные заголовки для Chrome
 if (randomUA.includes("Chrome")) {
     headers["Sec-Ch-Ua"] = '"Not_A Brand";v="8", "Chromium";v="120", "Google Chrome";v="120"';
-    headers["Sec-Ch-Ua-Mobile"] = isMobile ? "?1" : "?0";
+    headers["Sec-Ch-Ua-Mobile"] = "?0";
     
     // Определяем платформу из UA
     if (randomUA.includes("Windows")) {
@@ -39,10 +28,14 @@ if (randomUA.includes("Chrome")) {
     } else if (randomUA.includes("Macintosh")) {
         headers["Sec-Ch-Ua-Platform"] = '"macOS"';
     } else if (randomUA.includes("Linux")) {
-        headers["Sec-Ch-Ua-Platform"] = isMobile ? '"Android"' : '"Linux"';
+        headers["Sec-Ch-Ua-Platform"] = '"Linux"';
     }
     
-    headers["Upgrade-Insecure-Requests"] = "1"; // Оставляем только это
+    headers["Sec-Fetch-Dest"] = "document";
+    headers["Sec-Fetch-Mode"] = "navigate";
+    headers["Sec-Fetch-Site"] = "none";
+    headers["Sec-Fetch-User"] = "?1";
+    headers["Upgrade-Insecure-Requests"] = "1";
 }
 
 // Стандартные заголовки
