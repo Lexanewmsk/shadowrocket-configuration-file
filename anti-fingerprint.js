@@ -6,7 +6,7 @@ let originalUA = headers["User-Agent"] || "";
 let isMobile = originalUA.includes("iPhone") || originalUA.includes("iPad") || originalUA.includes("iPod");
 
 // Массив User-Agent для ротации
-const userAgents = [
+const desktopAgents = [
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36",
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36",
@@ -21,13 +21,11 @@ const userAgents = [
 const mobileAgents = [
     "Mozilla/5.0 (Linux; Android 13; SM-G991B) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36",
     "Mozilla/5.0 (Linux; Android 12; Pixel 6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Mobile Safari/537.36",
-    "Mozilla/5.0 (Linux; Android 14; SM-S908B) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Mobile Safari/537.36",
-    "Mozilla/5.0 (Linux; Android 13; ONEPLUS A6013) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36",
-    "Mozilla/5.0 (Linux; Android 12; Xiaomi 12) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Mobile Safari/537.36"
+    "Mozilla/5.0 (Linux; Android 14; SM-S908B) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Mobile Safari/537.36"
 ];
 
 // Случайный выбор User-Agent
-const randomUA = isMobile ? mobileAgents[Math.floor(Math.random() * mobileAgents.length)] : userAgents[Math.floor(Math.random() * userAgents.length)];
+const randomUA = isMobile ? mobileAgents[Math.floor(Math.random() * mobileAgents.length)] : desktopAgents[Math.floor(Math.random() * desktopAgents.length)];
 headers["User-Agent"] = randomUA;
 
 // Дополнительные заголовки для Chrome
@@ -44,11 +42,7 @@ if (randomUA.includes("Chrome")) {
         headers["Sec-Ch-Ua-Platform"] = isMobile ? '"Android"' : '"Linux"';
     }
     
-    headers["Sec-Fetch-Dest"] = "document";
-    headers["Sec-Fetch-Mode"] = "navigate";
-    headers["Sec-Fetch-Site"] = "none";
-    headers["Sec-Fetch-User"] = "?1";
-    if (!isMobile) headers["Upgrade-Insecure-Requests"] = "1"; // Только для десктопа
+    headers["Upgrade-Insecure-Requests"] = "1"; // Оставляем только это
 }
 
 // Стандартные заголовки
