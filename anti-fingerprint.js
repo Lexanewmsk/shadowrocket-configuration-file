@@ -22,7 +22,6 @@ if (randomUA.includes("Chrome")) {
     headers["Sec-Ch-Ua"] = '"Not_A Brand";v="8", "Chromium";v="120", "Google Chrome";v="120"';
     headers["Sec-Ch-Ua-Mobile"] = "?0";
     
-    // Определяем платформу из UA
     if (randomUA.includes("Windows")) {
         headers["Sec-Ch-Ua-Platform"] = '"Windows"';
     } else if (randomUA.includes("Macintosh")) {
@@ -31,17 +30,17 @@ if (randomUA.includes("Chrome")) {
         headers["Sec-Ch-Ua-Platform"] = '"Linux"';
     }
     
-    headers["Sec-Fetch-Dest"] = "document";
-    headers["Sec-Fetch-Mode"] = "navigate";
-    headers["Sec-Fetch-Site"] = "none";
-    headers["Sec-Fetch-User"] = "?1";
     headers["Upgrade-Insecure-Requests"] = "1";
+    headers["Accept"] = "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7"; // Более конкретный Accept для Chrome
+    headers["Accept-Language"] = "en-US,en;q=0.9"; // Стандартный язык
 }
 
-// Стандартные заголовки
-headers["Accept-Language"] = "en-US,en;q=0.9";
-headers["Accept-Encoding"] = "gzip, deflate, br";
-headers["Accept"] = "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7";
+// Дополнительные заголовки для Firefox
+if (randomUA.includes("Firefox")) {
+    headers["Accept"] = "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"; // Типичный Accept для Firefox
+    headers["Accept-Language"] = "en-US,en;q=0.5";
+    headers["DNT"] = "1"; // Do Not Track
+}
 
 // Удаляем заголовки, выдающие proxy/VPN
 delete headers["X-Forwarded-For"];
@@ -53,3 +52,26 @@ delete headers["CF-Connecting-IP"];
 delete headers["True-Client-IP"];
 
 $done({headers: headers});
+
+// Для http-response: подмена JavaScript-данных
+if ($response) {
+    let body = $response.body;
+    if (body) {
+        if (randomUA.includes("Chrome")) {
+            body = body.replace(/navigator\.platform\s*=\s*['"]iPhone['"]/g, 'navigator.platform = "Win32"');
+            body = body.replace(/navigator\.platform\s*=\s*['"]iPad['"]/g, 'navigator.platform = "Win32"');
+            body = body.replace(/navigator\.platform\s*=\s*['"]MacIntel['"]/g, 'navigator.platform = (randomUA.includes("Windows") ? "Win32" : "MacIntel")');
+            body = body.replace(/navigator\.userAgentData\.platform\s*=\s*['"]iOS['"]/g, 'navigator.userAgentData.platform = (randomUA.includes("Windows") ? "Windows" : "macOS")');
+            body = body.replace(/screen\.width\s*=\s*\d+/g, 'screen.width = 1920');
+            body = body.replace(/screen\.height\s*=\s*\d+/g, 'screen.height = 1080');
+        } else if (randomUA.includes("Firefox")) {
+            body = body.replace(/navigator\.platform\s*=\s*['"]iPhone['"]/g, 'navigator.platform = "Win32"');
+            body = body.replace(/navigator\.platform\s*=\s*['"]iPad['"]/g, 'navigator.platform = "Win32"');
+            body = body.replace(/navigator\.platform\s*=\s*['"]MacIntel['"]/g, 'navigator.platform = (randomUA.includes("Windows") ? "Win32" : "MacIntel")');
+            body = body.replace(/navigator\.userAgentData\.platform\s*=\s*['"]iOS['"]/g, 'navigator.userAgentData.platform = (randomUA.includes("Windows") ? "Windows" : "macOS")');
+            body = body.replace(/screen\.width\s*=\s*\d+/g, 'screen.width = 1280');
+            body = body.replace(/screen\.height\s*=\s*\d+/g, 'screen.height = 800');
+        }
+    }
+    $done({body: body});
+}
