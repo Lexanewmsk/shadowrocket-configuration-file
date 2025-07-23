@@ -63,17 +63,17 @@ try {
     // Если нечего удалять - выходим сразу
     if (keysToDelete.length === 0) {
         $done({});
-        return;
+    } else {
+        // Удаляем параметры
+        keysToDelete.forEach(key => params.delete(key));
+        
+        // Возвращаем модифицированный запрос вместо редиректа
+        let cleanUrl = urlObj.toString();
+        $done({
+            url: cleanUrl
+        });
     }
-    
-    // Удаляем параметры
-    keysToDelete.forEach(key => params.delete(key));
-    
-    // Возвращаем модифицированный запрос вместо редиректа
-    let cleanUrl = urlObj.toString();
-    $done({
-        url: cleanUrl
-    });
+
     
 } catch (error) {
     $done({});
