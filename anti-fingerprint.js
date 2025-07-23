@@ -15,13 +15,20 @@ if (url.includes('sberbank.ru') ||
     url.includes('tinkoff.ru') ||
     url.includes('vtb.ru') ||
     url.includes('paypal.com') ||
-    url.includes('raiffeisen.ru') ||
-    url.includes('open.ru') ||
-    url.includes('rshb.ru') ||
-    url.includes('gazprombank.ru') ||
     url.includes('qiwi.com') ||
     url.includes('yoomoney.ru') ||
     url.includes('webmoney.ru')) {
+    $done({});
+}
+
+// НЕ модифицируем запросы к мессенджерам и социальным сетям
+if (url.includes('whatsapp.net') || 
+    url.includes('whatsapp.com') ||
+    url.includes('web.whatsapp.com') ||
+    url.includes('telegram.org') ||
+    url.includes('t.me') ||
+    url.includes('vk.com') ||
+    url.includes('ok.ru')) {
     $done({});
 }
 
