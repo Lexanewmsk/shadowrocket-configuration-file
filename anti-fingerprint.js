@@ -9,6 +9,22 @@ if (url.includes('challenges.cloudflare.com') ||
     $done({});
 }
 
+// НЕ модифицируем запросы к банкам и платежным системам
+if (url.includes('sberbank.ru') || 
+    url.includes('alfabank.ru') || 
+    url.includes('tinkoff.ru') ||
+    url.includes('vtb.ru') ||
+    url.includes('paypal.com') ||
+    url.includes('raiffeisen.ru') ||
+    url.includes('open.ru') ||
+    url.includes('rshb.ru') ||
+    url.includes('gazprombank.ru') ||
+    url.includes('qiwi.com') ||
+    url.includes('yoomoney.ru') ||
+    url.includes('webmoney.ru')) {
+    $done({});
+}
+
 // Проверка исходного User-Agent для определения платформы
 let originalUA = headers["User-Agent"] || "";
 let isMobile = originalUA.includes("iPhone") || originalUA.includes("iPad") || originalUA.includes("iPod");
