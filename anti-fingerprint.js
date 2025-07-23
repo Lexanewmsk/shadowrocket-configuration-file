@@ -1,6 +1,13 @@
 let headers = $request.headers;
 let url = $request.url;
 
+// НЕ модифицируем запросы к сервисам Apple
+if (url.includes('apple.com') || 
+    url.includes('icloud.com') || 
+    url.includes('me.com')) {
+    $done({});
+}
+
 // НЕ модифицируем запросы к Cloudflare сервисам
 if (url.includes('challenges.cloudflare.com') || 
     url.includes('cdnjs.cloudflare.com') || 
