@@ -32,6 +32,14 @@ if (url.includes('whatsapp.net') ||
     $done({});
 }
 
+// НЕ модифицируем только навигационные сервисы Яндекса
+if (url.includes('n.maps.yandex.ru') || 
+    url.includes('api-maps.yandex.ru') ||
+    url.includes('core-renderer-tiles.maps.yandex.net') ||
+    url.includes('yandex.ru/maps/api')) {
+    $done({});
+}
+
 // Проверка исходного User-Agent для определения платформы
 let originalUA = headers["User-Agent"] || "";
 let isMobile = originalUA.includes("iPhone") || originalUA.includes("iPad") || originalUA.includes("iPod");
