@@ -1,13 +1,6 @@
 let headers = $request.headers;
 let url = $request.url;
 
-// НЕ модифицируем запросы к сервисам Apple
-if (url.includes('apple.com') || 
-    url.includes('icloud.com') || 
-    url.includes('me.com')) {
-    $done({});
-}
-
 // НЕ модифицируем запросы к Cloudflare сервисам
 if (url.includes('challenges.cloudflare.com') || 
     url.includes('cdnjs.cloudflare.com') || 
@@ -28,59 +21,32 @@ if (url.includes('sberbank.ru') ||
     $done({});
 }
 
-// НЕ модифицируем запросы к мессенджерам и социальным сетям
-if (url.includes('whatsapp.net') || 
-    url.includes('whatsapp.com') ||
-    url.includes('web.whatsapp.com') ||
-    url.includes('telegram.org') ||
-    url.includes('t.me') ||
-    url.includes('vk.com') ||
-    url.includes('ok.ru')) {
-    $done({});
-}
-
-// НЕ модифицируем только навигационные сервисы Яндекса
-if (url.includes('n.maps.yandex.ru') || 
-    url.includes('api-maps.yandex.ru') ||
-    url.includes('core-renderer-tiles.maps.yandex.net') ||
-    url.includes('yandex.ru/maps/api')) {
-    $done({});
-}
-
 // Проверка исходного User-Agent для определения платформы
 let originalUA = headers["User-Agent"] || "";
 let isMobile = originalUA.includes("iPhone") || originalUA.includes("iPad") || originalUA.includes("iPod");
 
-// Один стабильный User-Agent для каждой платформы
-const desktopUA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36";
-const mobileUA = "Mozilla/5.0 (Linux; Android 13; SM-G991B) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36";
+// Реалистичные User-Agent строки
+const desktopUA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1 Safari/605.1.15";
+const mobileUA = "Mozilla/5.0 (iPhone; CPU iPhone OS 14_8 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1 Mobile/15E148 Safari/604.1";
 
 // Устанавливаем соответствующий User-Agent
 const targetUA = isMobile ? mobileUA : desktopUA;
 headers["User-Agent"] = targetUA;
 
-// Настройка заголовков для Chrome
+// Настройка заголовков
 if (isMobile) {
-    // Мобильные заголовки (Android)
-    headers["Sec-Ch-Ua"] = '"Not_A Brand";v="8", "Chromium";v="120", "Google Chrome";v="120"';
-    headers["Sec-Ch-Ua-Mobile"] = "?1";
-    headers["Sec-Ch-Ua-Platform"] = '"Android"';
-    headers["Sec-Ch-Ua-Platform-Version"] = '"13.0.0"';
-    headers["Accept"] = "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8";
-    headers["Accept-Language"] = "en-US,en;q=0.9";
-    headers["Accept-Encoding"] = "gzip, deflate, br";
+    // iPhone Safari заголовки (БЕЗ Chrome Sec-Ch-Ua)
+    headers["Accept"] = "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8";
+    headers["Accept-Language"] = "en-US,en;q=0.5";
+    headers["Accept-Encoding"] = "gzip, deflate";
 } else {
-    // Десктопные заголовки (Windows)
-    headers["Sec-Ch-Ua"] = '"Not_A Brand";v="8", "Chromium";v="120", "Google Chrome";v="120"';
-    headers["Sec-Ch-Ua-Mobile"] = "?0";
-    headers["Sec-Ch-Ua-Platform"] = '"Windows"';
-    headers["Sec-Ch-Ua-Platform-Version"] = '"15.0.0"';
-    headers["Accept"] = "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8";
-    headers["Accept-Language"] = "en-US,en;q=0.9";
-    headers["Accept-Encoding"] = "gzip, deflate, br";
+    // Mac Safari заголовки (БЕЗ Chrome заголовков)
+    headers["Accept"] = "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8";
+    headers["Accept-Language"] = "en-US,en;q=0.5";
+    headers["Accept-Encoding"] = "gzip, deflate";
 }
 
-// Общие заголовки для Chrome
+// Общие заголовки
 headers["Upgrade-Insecure-Requests"] = "1";
 headers["Sec-Fetch-Site"] = "none";
 headers["Sec-Fetch-Mode"] = "navigate";
@@ -97,10 +63,5 @@ delete headers["CF-Connecting-IP"];
 delete headers["True-Client-IP"];
 delete headers["X-Forwarded-Port"];
 delete headers["X-Original-Forwarded-For"];
-
-// Удаляем iOS-специфичные заголовки для мобильных
-if (isMobile) {
-    delete headers["X-Requested-With"];
-}
 
 $done({headers: headers});
