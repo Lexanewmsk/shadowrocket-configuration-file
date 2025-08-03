@@ -17,6 +17,7 @@ DOMAIN-SUFFIX,myrtb.mail.ru
 DOMAIN-SUFFIX,mnt.mail.ru
 DOMAIN-SUFFIX,track.mail.ru
 DOMAIN,tracker-api.vk-analytics.ru
+DOMAIN,stat.radar.imgsmail.ru
 
 # Sber
 DOMAIN-SUFFIX,metrics.sber.ru
