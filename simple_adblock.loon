@@ -7,7 +7,7 @@ HOST-SUFFIX, google.com, DIRECT
 FINAL, DIRECT
 
 [Script]
-http-request ^https?:// script-path=https://gist.github.com/yourusername/3333333333/raw/minimal_test.js, tag=MinimalTest, requires-body=true, timeout=10, enabled=true
+http-request ^https?:// script-path=https://raw.githubusercontent.com/Lexanewmsk/shadowrocket-configuration-file/refs/heads/Shadowrocket/block_ads.js, tag=MinimalTest, requires-body=true, timeout=10, enabled=true
 
 [MITM]
 hostname = *.google.com
