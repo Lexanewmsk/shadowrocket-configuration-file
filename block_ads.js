@@ -1,8 +1,7 @@
-// Минимальный скрипт для теста
+console.log('Script is running');
 if (typeof $request !== 'undefined') {
     console.log('Request received: ' + $request.url);
-    $done({});
 } else {
-    console.log('Error: $request is undefined. Check MITM and routing.');
-    $done({});
+    console.log('Error: $request is undefined. MITM or routing may be misconfigured.');
 }
+$done({});
