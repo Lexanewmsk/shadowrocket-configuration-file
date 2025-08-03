@@ -1,7 +1,88 @@
-console.log('Script is running at ' + new Date().toISOString());
-if (typeof $request !== 'undefined') {
-    console.log('Request received: ' + $request.url);
+// Simple AdBlock Script для Loon
+// Версия: 1.0
+
+const scriptName = “SimpleAdBlock”;
+const timestamp = new Date().toISOString();
+
+console.log(`[${scriptName}] Script started at: ${timestamp}`);
+
+// Проверяем тип скрипта и наличие объектов
+if (typeof $request !== ‘undefined’) {
+console.log(`[${scriptName}] Processing REQUEST: ${$request.url}`);
+console.log(`[${scriptName}] Method: ${$request.method}`);
+console.log(`[${scriptName}] Headers: ${JSON.stringify($request.headers)}`);
+
+```
+// Блокируем рекламные URL
+const adPatterns = [
+    /doubleclick\.net/i,
+    /googleadservices\.com/i,
+    /googlesyndication\.com/i,
+    /googletagmanager\.com/i,
+    /googletagservices\.com/i,
+    /pagead2\.googlesyndication\.com/i,
+    /tpc\.googlesyndication\.com/i,
+    /ads\.yahoo\.com/i,
+    /ads\d*\..*\.com/i
+];
+
+const url = $request.url;
+const shouldBlock = adPatterns.some(pattern => pattern.test(url));
+
+if (shouldBlock) {
+    console.log(`[${scriptName}] BLOCKED: ${url}`);
+    $done({
+        response: {
+            status: 200,
+            headers: {
+                'Content-Type': 'text/plain'
+            },
+            body: ''
+        }
+    });
 } else {
-    console.log('Error: $request is undefined. MITM or routing may be misconfigured.');
+    console.log(`[${scriptName}] ALLOWED: ${url}`);
+    $done({});
 }
+```
+
+} else if (typeof $response !== ‘undefined’) {
+console.log(`[${scriptName}] Processing RESPONSE: ${$response.status}`);
+
+```
+// Модификация ответа (если нужно)
+if ($response.body) {
+    let body = $response.body;
+    
+    // Удаляем рекламные элементы из HTML/JS
+    const adSelectors = [
+        /<script[^>]*googlesyndication[^>]*>.*?<\/script>/gi,
+        /<ins[^>]*adsbygoogle[^>]*>.*?<\/ins>/gi,
+        /<div[^>]*class="[^"]*ad[^"]*"[^>]*>.*?<\/div>/gi
+    ];
+    
+    adSelectors.forEach(selector => {
+        body = body.replace(selector, '');
+    });
+    
+    if (body !== $response.body) {
+        console.log(`[${scriptName}] Modified response body`);
+        $done({
+            response: {
+                ...$response,
+                body: body
+            }
+        });
+    } else {
+        $done({});
+    }
+} else {
+    $done({});
+}
+```
+
+} else {
+console.log(`[${scriptName}] ERROR: Neither $request nor $response is defined`);
+console.log(`[${scriptName}] This indicates MITM or script configuration issues`);
 $done({});
+}
