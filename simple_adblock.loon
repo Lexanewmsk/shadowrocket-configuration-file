@@ -1,0 +1,24 @@
+[General]
+name = Simple Adblock
+version = 1.0
+description = Simple plugin to block ad requests.
+author = Grok (xAI)
+enabled = true
+
+[Rule]
+# Базовые правила блокировки рекламы
+DOMAIN-SUFFIX, doubleclick.net, REJECT
+DOMAIN-SUFFIX, googleadservices.com, REJECT
+DOMAIN-SUFFIX, adnetwork.net, REJECT
+
+# Исключения для твоих сайтов
+DOMAIN, sberbank.ru, DIRECT
+DOMAIN, tinkoff.ru, DIRECT
+DOMAIN-SUFFIX, mos.ru, DIRECT
+
+[Script]
+# Скрипт для динамической блокировки рекламы
+http-request ^https?:// script-path=https://gist.github.com/yourusername/1234567890/raw/block_ads.js, tag=BlockAds, requires-body=true, timeout=10, enabled=true
+
+[MITM]
+hostname = *.doubleclick.net, *.googleadservices.com, *.adnetwork.net
