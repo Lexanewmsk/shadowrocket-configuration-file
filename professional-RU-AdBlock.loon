@@ -73,21 +73,21 @@ DOMAIN-KEYWORD,reklama,REJECT
 # =====================================
 
 # Основная обработка запросов для .ru доменов
-http-request ^https?://.*\.ru/.* script-path=https://raw.githubusercontent.com/YourUsername/loon-professional-adblock/main/professional_ru_adblock.js, requires-body=false, timeout=10, tag=🚫 RU AdBlock Request, enable=true
+http-request ^https?://.*\.ru/.* script-path=https://raw.githubusercontent.com/Lexanewmsk/shadowrocket-configuration-file/refs/heads/Shadowrocket/professional-RU-AdBlock.js, requires-body=false, timeout=10, tag=🚫 RU AdBlock Request, enable=true
 
 # HTTP->HTTPS принудительные редиректы
-http-request ^http://.*\.ru/.* script-path=https://raw.githubusercontent.com/YourUsername/loon-professional-adblock/main/professional_ru_adblock.js, requires-body=false, timeout=5, tag=🔒 HTTPS Redirect, enable=true
+http-request ^http://.*\.ru/.* script-path=https://raw.githubusercontent.com/Lexanewmsk/shadowrocket-configuration-file/refs/heads/Shadowrocket/professional-RU-AdBlock.js, requires-body=false, timeout=5, tag=🔒 HTTPS Redirect, enable=true
 
 # Очистка HTML контента от рекламы
-http-response ^https?://.*\.ru/.* script-path=https://raw.githubusercontent.com/YourUsername/loon-professional-adblock/main/professional_ru_adblock.js, requires-body=true, timeout=15, tag=🧹 HTML Cleaner, enable=true
+http-response ^https?://.*\.ru/.* script-path=https://raw.githubusercontent.com/Lexanewmsk/shadowrocket-configuration-file/refs/heads/Shadowrocket/professional-RU-AdBlock.js, requires-body=true, timeout=15, tag=🧹 HTML Cleaner, enable=true
 
 # Специальная обработка для популярных сайтов
-http-request ^https?://.*(yandex|vk|mail|ok|avito|pikabu|habr|lenta|rbc)\.ru/.* script-path=https://raw.githubusercontent.com/YourUsername/loon-professional-adblock/main/professional_ru_adblock.js, requires-body=false, timeout=10, tag=🎯 Popular Sites, enable=true
+http-request ^https?://.*(yandex|vk|mail|ok|avito|pikabu|habr|lenta|rbc)\.ru/.* script-path=https://raw.githubusercontent.com/Lexanewmsk/shadowrocket-configuration-file/refs/heads/Shadowrocket/professional-RU-AdBlock.js, requires-body=false, timeout=10, tag=🎯 Popular Sites, enable=true
 
-http-response ^https?://.*(yandex|vk|mail|ok|avito|pikabu|habr|lenta|rbc)\.ru/.* script-path=https://raw.githubusercontent.com/YourUsername/loon-professional-adblock/main/professional_ru_adblock.js, requires-body=true, timeout=15, tag=🎯 Popular Sites Response, enable=true
+http-response ^https?://.*(yandex|vk|mail|ok|avito|pikabu|habr|lenta|rbc)\.ru/.* script-path=https://raw.githubusercontent.com/Lexanewmsk/shadowrocket-configuration-file/refs/heads/Shadowrocket/professional-RU-AdBlock.js, requires-body=true, timeout=15, tag=🎯 Popular Sites Response, enable=true
 
 # Блокировка международной рекламы на русских сайтах
-http-request ^https?://.*\.(doubleclick|googlesyndication|googleadservices|facebook|outbrain|taboola)\..*/.* script-path=https://raw.githubusercontent.com/YourUsername/loon-professional-adblock/main/professional_ru_adblock.js, requires-body=false, timeout=5, tag=🌍 International Ads, enable=true
+http-request ^https?://.*\.(doubleclick|googlesyndication|googleadservices|facebook|outbrain|taboola)\..*/.* script-path=https://raw.githubusercontent.com/Lexanewmsk/shadowrocket-configuration-file/refs/heads/Shadowrocket/professional-RU-AdBlock.js, requires-body=false, timeout=5, tag=🌍 International Ads, enable=true
 
 [MITM]
 # =====================================
