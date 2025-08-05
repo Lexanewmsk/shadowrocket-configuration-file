@@ -1,53 +1,40 @@
-#!name=Professional RU AdBlock
-#!desc=Профессиональная система блокировки рекламы для русскоязычных сайтов v3.1
+#!name=Professional RU AdBlock для Loon
+#!desc=Профессиональная блокировка рекламы для русских сайтов v3.1 (Loon версия)
 #!author=Professional AdBlock Team
 #!homepage=https://github.com/professional-adblock/loon-ru-adblock
 #!icon=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/AdBlocking.png
-#!select=Режим блокировки, Сбалансированный, Агрессивный, Максимальный
-#!select=HTTPS редиректы, Включить, Отключить  
-#!select=Очистка HTML, Включить, Отключить
-#!select=Антитрекинг, Включить, Отключить
-#!select=Дебаг логи, Отключить, Включить
-
-[General]
-# Принудительное использование HTTP движка для MITM
-force-http-engine-hosts = %APPEND% *.ru, *.рф, *.yandex.ru, *.vk.com, *.mail.ru, *.ok.ru, *.dzen.ru, *.dzeninfra.ru
 
 [Rule]
 # =====================================
-# DNS БЛОКИРОВКА (БЫСТРАЯ)
+# DNS БЛОКИРОВКА
 # =====================================
 
-# Google реклама - блокируем на DNS уровне для скорости
+# Google реклама
 DOMAIN-SUFFIX,doubleclick.net,REJECT
-DOMAIN-SUFFIX,googlesyndication.com,REJECT  
+DOMAIN-SUFFIX,googlesyndication.com,REJECT
 DOMAIN-SUFFIX,googleadservices.com,REJECT
 DOMAIN-SUFFIX,googletagmanager.com,REJECT
-DOMAIN-SUFFIX,googletagservices.com,REJECT
-DOMAIN-SUFFIX,adsystem.google.com,REJECT
 DOMAIN-SUFFIX,pagead2.googlesyndication.com,REJECT
-DOMAIN-SUFFIX,tpc.googlesyndication.com,REJECT
 
 # Яндекс реклама
 DOMAIN-SUFFIX,bs.yandex.ru,REJECT
 DOMAIN-SUFFIX,an.yandex.ru,REJECT
 DOMAIN-SUFFIX,yabs.yandex.ru,REJECT
-DOMAIN-SUFFIX,awaps.yandex.ru,REJECT
 DOMAIN-SUFFIX,adfox.ru,REJECT
 DOMAIN-SUFFIX,adfox.yandex.ru,REJECT
-DOMAIN-SUFFIX,yandexadexchange.net,REJECT
 
-# Яндекс.Дзен реклама и трекинг
+# Дзен реклама
 DOMAIN-SUFFIX,dzeninfra.ru,REJECT
 DOMAIN-SUFFIX,static.dzeninfra.ru,REJECT
-DOMAIN-SUFFIX,clck.dzen.ru,REJECT  
-DOMAIN-SUFFIX,an.dzen.ru,REJECT
-DOMAIN-SUFFIX,ads.dzen.ru,REJECT
+DOMAIN-SUFFIX,clck.dzen.ru,REJECT
+DOMAIN-SUFFIX,ads.dzeninfra.ru,REJECT
 
-# Mail.ru реклама
+# Mail.ru группа
 DOMAIN-SUFFIX,go.mail.ru,REJECT
 DOMAIN-SUFFIX,rs.mail.ru,REJECT
 DOMAIN-SUFFIX,top.mail.ru,REJECT
+DOMAIN-SUFFIX,top-fwz1.mail.ru,REJECT
+DOMAIN-SUFFIX,ad.mail.ru,REJECT
 
 # RTB платформы
 DOMAIN-SUFFIX,relap.io,REJECT
@@ -55,118 +42,47 @@ DOMAIN-SUFFIX,buzzoola.com,REJECT
 DOMAIN-SUFFIX,marketgid.com,REJECT
 DOMAIN-SUFFIX,mgid.com,REJECT
 DOMAIN-SUFFIX,smi2.net,REJECT
-DOMAIN-SUFFIX,outbrain.com,REJECT
-DOMAIN-SUFFIX,taboola.com,REJECT
 
-# Рамблер
-DOMAIN-SUFFIX,top100.rambler.ru,REJECT
-DOMAIN-SUFFIX,counter.rambler.ru,REJECT
-DOMAIN-SUFFIX,ssp.rambler.ru,REJECT
-DOMAIN-SUFFIX,nova.rambler.ru,REJECT
-
-# Аналитика и трекинг
+# Аналитика
 DOMAIN-SUFFIX,mc.yandex.ru,REJECT
-DOMAIN-SUFFIX,informer.yandex.ru,REJECT
 DOMAIN-SUFFIX,metrika.yandex.ru,REJECT
 DOMAIN-SUFFIX,google-analytics.com,REJECT
-DOMAIN-SUFFIX,googleanalytics.com,REJECT
-
-# Facebook трекинг
-DOMAIN-SUFFIX,connect.facebook.net,REJECT
-DOMAIN-KEYWORD,facebook.com/tr,REJECT
 
 # Криптомайнинг
 DOMAIN-SUFFIX,coinhive.com,REJECT
-DOMAIN-SUFFIX,coin-hive.com,REJECT
-DOMAIN-SUFFIX,jsecoin.com,REJECT
 DOMAIN-SUFFIX,crypto-loot.com,REJECT
 
-# Поддомены рекламы
+# Трекинг домены
 DOMAIN-KEYWORD,ads,REJECT
 DOMAIN-KEYWORD,advertisement,REJECT
 DOMAIN-KEYWORD,reklama,REJECT
-DOMAIN-KEYWORD,adnxs,REJECT
-
-# Специфичные URL паттерны
-URL-REGEX,^https?://yandex\.ru/an/count/.*,REJECT
-URL-REGEX,^https?://.*\.yandex\.ru/an/count/.*,REJECT
-URL-REGEX,^https?://.*yandex.*/(an|bs|yabs)/.*,REJECT
-URL-REGEX,^https?://.*dzen.*/(click|track|pixel|beacon)/.*,REJECT
-URL-REGEX,^https?://clck\.dzen\.ru/.*,REJECT
-URL-REGEX,^https?://.*dzeninfra\.ru/.*/zen-lib/.*,REJECT
-
-# Трекинг параметры в URL
-URL-REGEX,.*[?&](adb-bits|test-tag|ctime|actual-format)=.*,REJECT
-URL-REGEX,.*[?&](utm_|fbclid|gclid|yclid)=.*,REJECT
 
 [Script]
 # =====================================
-# ИНТЕЛЛЕКТУАЛЬНАЯ БЛОКИРОВКА
+# HTTP СКРИПТЫ
 # =====================================
 
-# Основная обработка запросов для .ru доменов
-http-request ^https?://.*\.ru/.* script-path=https://raw.githubusercontent.com/Lexanewmsk/shadowrocket-configuration-file/refs/heads/Shadowrocket/professional-RU-AdBlock.js, requires-body=false, timeout=10, tag=🚫 RU AdBlock Request, enable=true
+# Основная обработка запросов для русских сайтов
+http-request ^https?://.*\.ru/.* script-path=https://raw.githubusercontent.com/your-repo/loon-ru-adblock.js, tag=RU-AdBlock-Request
 
-# HTTP->HTTPS принудительные редиректы
-http-request ^http://.*\.ru/.* script-path=https://raw.githubusercontent.com/Lexanewmsk/shadowrocket-configuration-file/refs/heads/Shadowrocket/professional-RU-AdBlock.js, requires-body=false, timeout=5, tag=🔒 HTTPS Redirect, enable=true
+# Очистка HTML ответов
+http-response ^https?://.*\.ru/.* script-path=https://raw.githubusercontent.com/your-repo/loon-ru-adblock.js, requires-body=true, tag=RU-AdBlock-Response
 
-# Очистка HTML контента от рекламы
-http-response ^https?://.*\.ru/.* script-path=https://raw.githubusercontent.com/Lexanewmsk/shadowrocket-configuration-file/refs/heads/Shadowrocket/professional-RU-AdBlock.js, requires-body=true, timeout=15, tag=🧹 HTML Cleaner, enable=true
+# Специальная обработка популярных сайтов
+http-request ^https?://.*(yandex|vk|mail|ok|dzen)\.ru/.* script-path=https://raw.githubusercontent.com/your-repo/loon-ru-adblock.js, tag=Popular-Sites
 
-# Специальная обработка для популярных сайтов
-http-request ^https?://.*(yandex|vk|mail|ok|avito|pikabu|habr|lenta|rbc|dzen)\.ru/.* script-path=https://raw.githubusercontent.com/Lexanewmsk/shadowrocket-configuration-file/refs/heads/Shadowrocket/professional-RU-AdBlock.js, requires-body=false, timeout=10, tag=🎯 Popular Sites, enable=true
+http-response ^https?://.*(yandex|vk|mail|ok|dzen)\.ru/.* script-path=https://raw.githubusercontent.com/your-repo/loon-ru-adblock.js, requires-body=true, tag=Popular-Sites-Response
 
-http-response ^https?://.*(yandex|vk|mail|ok|avito|pikabu|habr|lenta|rbc|dzen)\.ru/.* script-path=https://raw.githubusercontent.com/Lexanewmsk/shadowrocket-configuration-file/refs/heads/Shadowrocket/professional-RU-AdBlock.js, requires-body=true, timeout=15, tag=🎯 Popular Sites Response, enable=true
+# Блокировка международной рекламы
+http-request ^https?://.*\.(doubleclick|googlesyndication|googleadservices)\..*/.* script-path=https://raw.githubusercontent.com/your-repo/loon-ru-adblock.js, tag=International-Ads
 
-# Блокировка международной рекламы на русских сайтах
-http-request ^https?://.*\.(doubleclick|googlesyndication|googleadservices|facebook|outbrain|taboola)\..*/.* script-path=https://raw.githubusercontent.com/Lexanewmsk/shadowrocket-configuration-file/refs/heads/Shadowrocket/professional-RU-AdBlock.js, requires-body=false, timeout=5, tag=🌍 International Ads, enable=true
+# Дзен специальная обработка
+http-request ^https?://.*dzen(infra)?\.ru/.* script-path=https://raw.githubusercontent.com/your-repo/loon-ru-adblock.js, tag=Dzen-AdBlock
 
-# Яндекс.Дзен специальная обработка
-http-request ^https?://.*dzen(infra)?\.ru/.* script-path=https://raw.githubusercontent.com/Lexanewmsk/shadowrocket-configuration-file/refs/heads/Shadowrocket/professional-RU-AdBlock.js, requires-body=false, timeout=10, tag=📰 Dzen AdBlock, enable=true
-
-http-response ^https?://.*dzen(infra)?\.ru/.* script-path=https://raw.githubusercontent.com/Lexanewmsk/shadowrocket-configuration-file/refs/heads/Shadowrocket/professional-RU-AdBlock.js, requires-body=true, timeout=15, tag=📰 Dzen Clean, enable=true
-
-# Яндекс аналитика и счетчики
-http-request ^https?://.*yandex\.ru/(an|bs|yabs)/.* script-path=https://raw.githubusercontent.com/Lexanewmsk/shadowrocket-configuration-file/refs/heads/Shadowrocket/professional-RU-AdBlock.js, requires-body=false, timeout=5, tag=📊 Yandex Analytics, enable=true
+http-response ^https?://.*dzen(infra)?\.ru/.* script-path=https://raw.githubusercontent.com/your-repo/loon-ru-adblock.js, requires-body=true, tag=Dzen-Clean
 
 [MITM]
 # =====================================
 # MITM ХОСТЫ
 # =====================================
-
-# Основные .ru домены
-hostname = *.ru, *.рф,
-
-# Популярные русские сайты
-*.yandex.ru, *.ya.ru, 
-*.vk.com, *.vkontakte.ru,
-*.mail.ru, *.my.mail.ru,
-*.ok.ru, *.odnoklassniki.ru,
-
-# Яндекс.Дзен
-*.dzen.ru, *.dzeninfra.ru, clck.dzen.ru,
-
-# Новости и медиа
-*.lenta.ru, *.rbc.ru, *.kommersant.ru,
-*.ria.ru, *.tass.ru, *.interfax.ru,
-*.gazeta.ru, *.kp.ru, *.mk.ru,
-
-# Торговля
-*.avito.ru, *.youla.ru, *.drom.ru,
-*.ozon.ru, *.wildberries.ru, *.lamoda.ru,
-*.citilink.ru, *.dns-shop.ru,
-
-# Развлечения
-*.pikabu.ru, *.habr.com, *.vc.ru,
-*.kinopoisk.ru, *.ivi.ru, *.start.ru,
-*.music.yandex.ru,
-
-# Банки и финансы  
-*.sberbank.ru, *.vtb.ru, *.tinkoff.ru,
-*.alfabank.ru, *.raiffeisen.ru,
-
-# Рекламные домены для перехвата
-*.adfox.ru, *.adfox.yandex.ru,
-*.bs.yandex.ru, *.an.yandex.ru,
-*.relap.io, *.buzzoola.com,
-*.doubleclick.net, *.googlesyndication.com
+hostname = *.ru,*.рф,*.yandex.ru,*.ya.ru,*.vk.com,*.mail.ru,*.ok.ru,*.dzen.ru,*.dzeninfra.ru,*.lenta.ru,*.rbc.ru,*.pikabu.ru,*.habr.com,*.avito.ru,*.ozon.ru,*.wildberries.ru,clck.dzen.ru,*.adfox.ru,*.bs.yandex.ru,*.an.yandex.ru,*.doubleclick.net,*.googlesyndication.com
