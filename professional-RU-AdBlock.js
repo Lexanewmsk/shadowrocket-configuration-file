@@ -1,13 +1,13 @@
 /**
  * Professional Russian AdBlock Script for Loon
- * Версия: 3.0
+ * Версия: 3.1
  * Автор: Professional AdBlock Team
  * Описание: Комплексная система блокировки рекламы для русскоязычных сайтов
  */
 
 const CONFIG = {
     scriptName: "Professional-RU-AdBlock",
-    version: "3.0",
+    version: "3.1",
     debug: true,
     
     // Настройки блокировки
@@ -37,6 +37,10 @@ const BLOCK_LISTS = {
         "bs.yandex.ru", "an.yandex.ru", "yabs.yandex.ru", 
         "awaps.yandex.ru", "yastatic.net/awaps",
         "yandexadexchange.net", "adfox.ru", "adfox.yandex.ru",
+        
+        // Яндекс.Дзен реклама и трекинг
+        "dzeninfra.ru", "static.dzeninfra.ru", 
+        "clck.dzen.ru", "an.dzen.ru", "ads.dzen.ru",
         
         // Google реклама
         "doubleclick.net", "googlesyndication.com", "googleadservices.com",
@@ -78,7 +82,7 @@ const BLOCK_LISTS = {
         // Трекинг
         "counter", "metric", "analytics", "tracking", "tracker",
         "pixel", "beacon", "collect", "stats", "statistic", "telemetry",
-        "fingerprint", "visitor", "session", "heatmap",
+        "fingerprint", "visitor", "session", "heatmap", "click",
         
         // Партнерские программы
         "affiliate", "partner", "referral", "commission", "cashback",
@@ -87,7 +91,10 @@ const BLOCK_LISTS = {
         "videoads", "preroll", "midroll", "postroll", "overlay",
         
         // Мобильная реклама
-        "mobileads", "inapp", "interstitial", "rewarded"
+        "mobileads", "inapp", "interstitial", "rewarded",
+        
+        // Дзен специфичные
+        "dzeninfra", "zen-lib", "clck"
     ],
     
     // Паттерны в URL
@@ -110,6 +117,7 @@ const BLOCK_LISTS = {
         // Трекинг пиксели
         /\/pixel\./i, /\/beacon\./i, /\/collect\?/i,
         /\/counter\./i, /\/metric\./i, /\/track\./i,
+        /\/click/i, /\/clck\./i,
         
         // Видеореклама
         /\/videoads/i, /\/preroll/i, /\/midroll/i,
@@ -121,7 +129,19 @@ const BLOCK_LISTS = {
         
         // Специфичные для России
         /\/adfox/i, /\/begun/i, /\/directadvert/i,
-        /\/rotaban/i, /\/mixadvert/i
+        /\/rotaban/i, /\/mixadvert/i,
+        
+        // Яндекс специфичные
+        /\/an\/count/i, /yandex.*\/an\//i, /\/bs\/yandex/i,
+        /\/yabs\//i, /awaps/i,
+        
+        // Дзен специфичные  
+        /dzeninfra\.ru.*zen-lib/i, /clck\.dzen\.ru/i,
+        /dzen.*\/(click|track|pixel)/i,
+        
+        // Трекинг параметры
+        /[?&](adb-bits|test-tag|ctime|actual-format)=/i,
+        /[?&](utm_|fbclid|gclid|yclid)/i
     ]
 };
 
@@ -139,6 +159,9 @@ const WHITELIST = {
         "vk.com/im", "vk.com/feed", "vk.com/friends",
         "ok.ru/messages", "ok.ru/feed",
         "facebook.com/messages", "instagram.com",
+        
+        // Дзен контент (не реклама)
+        "dzen.ru/news", "dzen.ru/media", "dzen.ru/video",
         
         // Почта
         "mail.ru/inbox", "yandex.ru/mail", "gmail.com",
@@ -179,7 +202,8 @@ const HTTPS_REDIRECT = {
         "lenta.ru", "rbc.ru", "kommersant.ru",
         "kinopoisk.ru", "ivi.ru", "start.ru",
         "ozon.ru", "wildberries.ru", "lamoda.ru",
-        "sberbank.ru", "vtb.ru", "tinkoff.ru"
+        "sberbank.ru", "vtb.ru", "tinkoff.ru",
+        "dzen.ru"
     ]
 };
 
@@ -306,6 +330,10 @@ class ContentCleaner {
             /<script[^>]*adfox[^>]*>.*?<\/script>/gis,
             /<div[^>]*adfox[^>]*>.*?<\/div>/gis,
             
+            // Дзен рекламные блоки
+            /<div[^>]*(?:id|class)="[^"]*(?:zen-lib|dzeninfra)[^"]*"[^>]*>.*?<\/div>/gis,
+            /<script[^>]*dzeninfra[^>]*>.*?<\/script>/gis,
+            
             // RTB контейнеры
             /<div[^>]*(?:id|class)="[^"]*(?:rtb|ssp|dsp|prebid)[^"]*"[^>]*>.*?<\/div>/gis,
             
@@ -315,7 +343,7 @@ class ContentCleaner {
             /<aside[^>]*(?:id|class)="[^"]*(?:ad|ads|sidebar-ad)[^"]*"[^>]*>.*?<\/aside>/gis,
             
             // Трекинг пиксели
-            /<img[^>]*(?:pixel|beacon|counter|metric)[^>]*>/gi,
+            /<img[^>]*(?:pixel|beacon|counter|metric|clck)[^>]*>/gi,
             /<noscript[^>]*>.*?<img[^>]*(?:counter|metric|pixel)[^>]*>.*?<\/noscript>/gis,
             
             // Видеореклама
