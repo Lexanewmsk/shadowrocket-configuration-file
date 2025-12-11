@@ -432,7 +432,14 @@ DOMAIN-SUFFIX,app.neftm.ru
 DOMAIN-SUFFIX,api.neftm.ru
 DOMAIN-SUFFIX,cdn.neftm.ru
 DOMAIN-SUFFIX,static.neftm.ru
-# Google
+# RUTUBE (Рутьюб)
+DOMAIN-SUFFIX,rutube.ru
+DOMAIN-SUFFIX,studio.rutube.ru
+DOMAIN-SUFFIX,api.rutube.ru
+DOMAIN-SUFFIX,cdn.rutube.ru
+DOMAIN-SUFFIX,static.rutube.ru
+DOMAIN-SUFFIX,video.rutube.ru
+# Google RU
 DOMAIN-SUFFIX,google.ru
 ### DNS Leak
 # DOMAIN-SUFFIX,whrq.net
