@@ -405,12 +405,37 @@ DOMAIN-SUFFIX,hi.tander.ru
 DOMAIN-SUFFIX,help.corp.tander.ru
 DOMAIN-SUFFIX,tvoymagnit.ru
 IP-CIDR,193.19.168.0/22
-
-
+# Авито
+DOMAIN-SUFFIX,avito.ru
+DOMAIN-SUFFIX,www.avito.ru
+DOMAIN-SUFFIX,m.avito.ru
+DOMAIN-SUFFIX,api.avito.ru
+DOMAIN-SUFFIX,developers.avito.ru
+DOMAIN-SUFFIX,avito.st
+DOMAIN-SUFFIX,www.avito.st
+DOMAIN-SUFFIX,static.avito.ru
+DOMAIN-SUFFIX,cdn.avito.ru
+DOMAIN-SUFFIX,img.avito.st
+DOMAIN-SUFFIX,avito.tech
+DOMAIN-SUFFIX,avtoteka.ru
+# Лукойл
+DOMAIN-SUFFIX,lukoil.ru
+DOMAIN-SUFFIX,lukoil.com
+DOMAIN-SUFFIX,auto.lukoil.ru
+DOMAIN-SUFFIX,licard.ru
+DOMAIN-SUFFIX,static.lukoil.ru
+DOMAIN-SUFFIX,cdn.lukoil.ru
+DOMAIN-SUFFIX,api.lukoil.ru
+# Нефтьмагистраль
+DOMAIN-SUFFIX,neftm.ru
+DOMAIN-SUFFIX,app.neftm.ru
+DOMAIN-SUFFIX,api.neftm.ru
+DOMAIN-SUFFIX,cdn.neftm.ru
+DOMAIN-SUFFIX,static.neftm.ru
 # Google
 DOMAIN-SUFFIX,google.ru
 ### DNS Leak
-# DOMAIN-SUFFIX,whrq.net,PROXYm
+# DOMAIN-SUFFIX,whrq.net
 # DOMAIN-SUFFIX,dnsleak.com
 # DOMAIN-SUFFIX,expressvpn.com
 # DOMAIN-SUFFIX,nordvpn.com
