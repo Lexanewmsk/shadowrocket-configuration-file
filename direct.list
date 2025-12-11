@@ -327,6 +327,67 @@ DOMAIN-SUFFIX,Health.mail.ru
 DOMAIN-SUFFIX,pogoda.mail.ru
 DOMAIN-SUFFIX,foto.mail.ru
 DOMAIN-SUFFIX,otvet.mail.ru
+# X5 Retail Group
+DOMAIN-SUFFIX,x5.ru
+DOMAIN-SUFFIX,x5id.ru
+DOMAIN-SUFFIX,x5club.ru
+DOMAIN-SUFFIX,x5paket.ru
+DOMAIN-SUFFIX,lk.x5.ru
+DOMAIN-SUFFIX,portalx5.hro.ru
+DOMAIN-SUFFIX,tc5.x5.ru
+DOMAIN-SUFFIX,tender.x5.ru
+DOMAIN-SUFFIX,id.x5.ru
+DOMAIN-SUFFIX,club-prev.x5.ru
+DOMAIN-SUFFIX,work.x5paket.ru
+DOMAIN-SUFFIX,5ka.ru
+DOMAIN-SUFFIX,my.5ka.ru
+DOMAIN-SUFFIX,api.5ka.ru
+DOMAIN-SUFFIX,perekrestok.ru
+DOMAIN-SUFFIX,my.perekrestok.ru
+DOMAIN-SUFFIX,vprok.ru
+DOMAIN-SUFFIX,karusel.ru
+DOMAIN-SUFFIX,5post.ru
+DOMAIN-SUFFIX,claim.perekrestok.ru
+DOMAIN-SUFFIX,support.5-delivery.ru
+# Райффайзен Банк
+DOMAIN-SUFFIX,raiffeisen.ru
+DOMAIN-SUFFIX,online.raiffeisen.ru
+DOMAIN-SUFFIX,www.raiffeisen.ru
+DOMAIN-SUFFIX,e-commerce.raiffeisen.ru
+DOMAIN-SUFFIX,test.ecom.raiffeisen.ru
+DOMAIN-SUFFIX,pay.raif.ru
+DOMAIN-SUFFIX,rbo.raiffeisen.ru
+DOMAIN-SUFFIX,auth.rbo.raiffeisen.ru
+DOMAIN-SUFFIX,chat.raiffeisen.ru
+DOMAIN-SUFFIX,connect.raiffeisen.ru
+DOMAIN-SUFFIX,acs.raiffeisen.ru
+DOMAIN-SUFFIX,mpi1.ecom.raiffeisen.ru
+DOMAIN-SUFFIX,mpi2.ecom.raiffeisen.ru
+DOMAIN-SUFFIX,xpay.ecom.raiffeisen.ru
+DOMAIN-SUFFIX,static.raiffeisen.ru
+DOMAIN-SUFFIX,cdn.raiffeisen.ru
+DOMAIN-SUFFIX,mobile.raiffeisen.ru
+DOMAIN-SUFFIX,mobilemail.raiffeisen.ru
+DOMAIN-SUFFIX,api.raiffeisen.ru
+DOMAIN-SUFFIX,elba.raiffeisen.ru
+DOMAIN-SUFFIX,i-elba.raiffeisen.ru
+DOMAIN-SUFFIX,ielba2.raiffeisen.ru
+DOMAIN-SUFFIX,elbrus.raiffeisen.ru
+DOMAIN-SUFFIX,demoelbrus.raiffeisen.ru
+DOMAIN-SUFFIX,navigator.raiffeisen.ru
+DOMAIN-SUFFIX,meet.raiffeisen.ru
+DOMAIN-SUFFIX,dialin.raiffeisen.ru
+DOMAIN-SUFFIX,lyncdiscover.raiffeisen.ru
+DOMAIN-SUFFIX,s4bout.raiffeisen.ru
+DOMAIN-SUFFIX,s4bweb.raiffeisen.ru
+DOMAIN-SUFFIX,autodiscover.raiffeisen.ru
+DOMAIN-SUFFIX,int.raiffeisen.ru
+DOMAIN-SUFFIX,ext.raiffeisen.ru
+DOMAIN-SUFFIX,edge.raiffeisen.ru
+DOMAIN-SUFFIX,data-channel.raiffeisen.ru
+DOMAIN-SUFFIX,emm.raiffeisen.ru
+DOMAIN-SUFFIX,cp.cloud.raiffeisen.ru
+
 
 
 
