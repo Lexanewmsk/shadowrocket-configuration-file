@@ -387,8 +387,24 @@ DOMAIN-SUFFIX,edge.raiffeisen.ru
 DOMAIN-SUFFIX,data-channel.raiffeisen.ru
 DOMAIN-SUFFIX,emm.raiffeisen.ru
 DOMAIN-SUFFIX,cp.cloud.raiffeisen.ru
-
-
+# Магнит
+DOMAIN-SUFFIX,magnit.ru
+DOMAIN-SUFFIX,magnit.com
+DOMAIN-SUFFIX,my.magnit.ru
+DOMAIN-SUFFIX,moy.magnit.ru
+DOMAIN-SUFFIX,id.magnit.ru
+DOMAIN-SUFFIX,middle-api.magnit.ru
+DOMAIN-SUFFIX,dostavka.magnit.ru
+DOMAIN-SUFFIX,apteka.magnit.ru
+DOMAIN-SUFFIX,promokod.magnit.ru
+DOMAIN-SUFFIX,magnum.magnit.ru
+DOMAIN-SUFFIX,magnit-learn.ru
+DOMAIN-SUFFIX,magnit-info.ru
+DOMAIN-SUFFIX,tander.ru
+DOMAIN-SUFFIX,hi.tander.ru
+DOMAIN-SUFFIX,help.corp.tander.ru
+DOMAIN-SUFFIX,tvoymagnit.ru
+IP-CIDR,193.19.168.0/22
 
 
 # Google
