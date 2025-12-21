@@ -2,6 +2,8 @@
 # AUTHOR: Yuvelirtut
 # REPO: https://github.com/Lexanewmsk/shadowrocket-configuration-file
 # UPDATED: 2025-12-11 19:00:00
+# Разное
+DOMAIN-SUFFIX,fur-studio.com
 # Вконтакте
 DOMAIN-SUFFIX,vk.com
 DOMAIN-SUFFIX,vk.ru
